@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{arxiv}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % micro typography
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[scaled]{beramono}
+\usepackage[procnames]{listings}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage[toc,page]{appendix}
+\usepackage{import}
+\usepackage{verbatim}
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+\DeclareUnicodeCharacter{3C9}{ }
+\raggedbottom
+
+\newcommand{\code}[2]{
+    \hrulefill
+    \subsection*{#1}
+    \lstinputlisting[
+        language=Python,
+        basicstyle=\ttfamily\small,
+        keywordstyle=\color{keywords},
+        commentstyle=\color{comments},
+        stringstyle=\color{red},
+        breaklines=true,
+        showstringspaces=false,
+        numbers=left,
+        stepnumber=1,
+        procnamekeys={def,class}
+    ]{#2}
+    \vspace{2em}
+}
+
+\newcommand{\logoutput}[2]{
+    \hrulefill
+    \subsection*{#1}
+    \lstinputlisting[
+        language=Python,
+        basicstyle=\ttfamily\small,
+        commentstyle=\color{comments},
+        stringstyle=\color{red},
+        breaklines=true,
+        showstringspaces=false,
+        numbers=left,
+        stepnumber=1,
+        procnamekeys={Query variable,Evidence,Ordering}
+    ]{#2}
+    \vspace{2em}
+}
+
+\title{Human-Robot Interaction}
+\renewcommand{\undertitle}{Robot learning}
+\date{}
+
+\author{
+    J. Verhaert \\
+    S1047220\\
+    Master Artificial Intelligence | Intelligent Technology \\
+    \texttt{joost.verhaert@student.ru.nl} \\
+    \And
+    T. Gelton \\
+    S4480783\\
+    Master Artificial Intelligence | Intelligent Technology \\
+    \texttt{thijs.gelton@student.ru.nl} \\
+}
+\renewcommand{\headeright}{Robot learning}
+
+\begin{document}
+    \maketitle
+    \pagebreak
+
+
+    \section{Introduction}\label{sec:introduction}
+    %- Describe the stages for completing the task
+
+
+    \section{Methods and algorithms}\label{sec:methods-and-algorithms}
+    %- Methods: Explain the methods/algorithms used and explain why
+
+
+    \section{Results}\label{sec:results}
+    %- Describe the results incorporating the advantages and limitations of the methods used.
+
+
+    \section{Conclusion}\label{sec:conclusion}
+    %- Draw your own conclusion about this robot learning approach
+
+    % \cite{mirrazavi2018unified} <-- multi arm motion planning with MDN's. Usable as citation
+
+    \bibliographystyle{ieeetr}
+    \bibliography{main}
+\end{document}
