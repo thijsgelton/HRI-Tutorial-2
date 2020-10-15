@@ -1,11 +1,18 @@
-from controller import Robot, Keyboard, Display, Motion, Motor, Camera
-import numpy as np
 import cv2
+import numpy as np
+import torch
+import torch.nn as nn
+from controller import Robot, Keyboard, Display, Motor, Camera
+from torch import tensor
+
+from MixtureDensityNetwork import MDN
+from PlainFeedForward import FFN
 
 
 class NaoRobot(Robot):
-    def __init__(self):
+    def __init__(self, controller: nn.Module):
         super(NaoRobot, self).__init__()
+        self.controller = controller
         print('> Starting robot controller')
 
         self.timeStepInMilli = 32
@@ -47,7 +54,7 @@ class NaoRobot(Robot):
         while self.step(self.timeStepInMilli) != -1:
             k = self.keyboard.getKey()
             pitchPosition = self.leftShoulderPitch.getPositionSensor().getValue()
-            rollPosition = self.leftShoulderPitch.getPositionSensor().getValue()
+            rollPosition = self.leftShoulderRoll.getPositionSensor().getValue()
             headYawPosition = self.headYaw.getPositionSensor().getValue()
             if k == Keyboard.DOWN:
                 self.leftShoulderPitch.setPosition(pitchPosition + step_size_pitch)
@@ -111,6 +118,25 @@ class NaoRobot(Robot):
             f.write(",".join(map(str, [ball_x, ball_y, positionLeftShoulderRoll, positionLeftShoulderPitch])))
             f.write('\n')
 
+    def actuate(self):
+        self.initiate_motors(0.0, 0.0, 1.0, 1.0)
+        while self.step(self.timeStepInMilli) != -1:
+            img = np.array(self.topCam.getImageArray(), dtype=np.uint8)
+            ball_x, ball_y = self.find_ball_in_img(img)
+            if ball_x and ball_y:
+                roll, pitch = self.controller.predict(tensor([ball_x, ball_y], dtype=torch.float32))
+                self.leftShoulderPitch.setPosition(pitch)
+                self.leftShoulderRoll.setPosition(roll)
 
-robot = NaoRobot()
-robot.collect_data()
+
+model = MDN(n_input=2, n_hidden=6, n_output=2, n_gaussians=2)
+# model = FFN(n_input=2, n_hidden=6, n_output=2)
+# model.load_state_dict(torch.load(r'D:\Projects\Radboud Universiteit\Human-Robot Interaction\HRI_Tutorial2_students\part2\ffn_model_nao'))
+model.load_state_dict(torch.load(
+    r'D:\Projects\Radboud Universiteit\Human-Robot Interaction\HRI_Tutorial2_students\part2\testmdn_model_nao_20kepochs_2gaussians'))
+model.eval()
+
+print(model)
+robot = NaoRobot(model)
+robot.actuate()
+# robot.collect_data()
