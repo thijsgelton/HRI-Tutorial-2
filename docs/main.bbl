@@ -3,4 +3,13 @@
 \bibitem{bishop1994mixture}
 C.~M. Bishop, ``Mixture density networks,'' 1994.
 
+\bibitem{thrun1995lifelong}
+S.~Thrun and T.~M. Mitchell, ``Lifelong robot learning,'' {\em Robotics and
+  autonomous systems}, vol.~15, no.~1-2, pp.~25--46, 1995.
+
+\bibitem{mirrazavi2018unified}
+S.~S. Mirrazavi~Salehian, N.~Figueroa, and A.~Billard, ``A unified framework
+  for coordinated multi-arm motion planning,'' {\em The International Journal
+  of Robotics Research}, vol.~37, no.~10, pp.~1205--1232, 2018.
+
 \end{thebibliography}

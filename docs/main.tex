@@ -99,7 +99,7 @@
     However, for any algorithm the first step to take is to gather data.
     For this we re-used some of Nao's parts from the first assignment, i.e. the keyboard functionality and the segmentation of the ball in the image.
     In a step-by-step manual fashion, the arm is first moved, then the ball is manually aligned and then 'E' is pressed to create a new data point.
-    This CSV file is imported into a PyTorch Dataset object (see notebook) and deduplicated to make sure that every X and Y coordinate pair of the ball only has one corresponding roll and pitch angle.
+    This CSV file is imported into a PyTorch Dataset object (see notebook) and deduplicated to make sure that every X and Y coordinate pair of the ball only has one corresponding roll ($\theta_1$) and pitch ($\theta_2$) angle.
 
     After importing the data, which consisted of 72 samples after deduplication, the MDN was trained first.
     For this we used the Adam optimizer and a Negative Log-Likelihood (NNL) loss function.
@@ -115,6 +115,10 @@
     To be able to compare the FFN and MDN, only one hidden layer with 6 nodes was used for the FFN as well.
     The network was then trained using the Mean Squared Error (MSE) and the same Adam optimizer as with the MDN.
 
+    One possibility with deep neural networks is to have the network extract the ball from an image itself instead of using the distilled coordinates by segmentation. 
+    In order to do so, the first layer(s) should be substituted by convolutional layers.
+    For this controlled toy experiment this would not be necessary.
+
 
     \section{Results}\label{sec:results}
     %- Describe the results incorporating the advantages and limitations of the methods used.
@@ -129,19 +133,18 @@
 
     Eventually we chose to use 2, 4 and 5 gaussians and compare the results.
     The learned distributions can been seen in figure \ref{fig:learned-mix-model}.
-    In this specific case, where Nao's arm only used two degrees of freedom, the MDN would quickly converge to a point where the outputted $\pi$ would become a one-hot encoded vector. 
+    In this specific case, different combinations of $\theta_1$ and $\theta_2$ could not lead to the same position and thus the MDN would quickly converge to a point where the outputted $\pi$ would become a one-hot encoded vector. 
+    Formulated differently, the model would not be doubting about a multitude of distributions describing the actual distribution best, it would only have to converge to one to best model it. 
     This meant that the Mixture Model would converge to only one Gaussian.
     When inspecting figure \ref{fig:learned-mix-model}, you can clearly see that there are two means for each mixture and that number of gaussians correlate to the size of the covariance.
+    It seems that the amount of Gaussians gave the model more freedom to become more specific with the distribution as the amount went up.
 
 
-    \begin{wrapfigure}{R}{0.6\textwidth}
-        \vspace{-20pt}
-        \begin{center}
-          \includegraphics[width=0.6\textwidth]{../part2/all_mod_predictions.png}
-        \end{center}
+    \begin{figure}[!htb]
+          \includegraphics[width=\textwidth]{../part2/all_mod_predictions.png}
         \caption{Predictions of the MDN models and the FFN model on the validation sample (N = 1).}
         \label{fig:pred-models}
-    \end{wrapfigure}
+    \end{figure}
 
     Aside from inspecting Nao's behavior the FFN and the different MDN models were tested against the validation sample (N = 1).
     In figure \ref{fig:pred-models} you can see that the best performing model is the MDN with 5 gaussians.
@@ -150,15 +153,32 @@
 
     A factor that was impossible to capture by still images, was the actual performance of all models in the simulator.
     Eventually, the FFN seem to outperform the MDNs as the MDN caused some oscillation whereas the FFN tracked the ball in a seemingly perfect and smooth manner.
+    The MDN with 4 gaussians showed the best tracking capability by a small margin compared to 5 gaussians.
 
-    \pagebreak
     \section{Conclusion}\label{sec:conclusion}
     %- Draw your own conclusion about this robot learning approach
-    Learning is indispensable when it comes to intelligent systems. 
+    There are multiple conclusions to draw from this experiment. First and foremost it is important to state that learning in intelligent systems is indispensable. 
+    In order to create an autonomous intelligent system, learning is key ingredient. 
+    However, for autonomous learning this present study is inadequate, as this was done in a supervised manner. 
+    A robot in an unknown and hostile environment has to be able to orient itself, explore its environment, recover from failures and must generalize well in order to solve a multitude of different tasks\cite{thrun1995lifelong}. 
+    
+    Still, the difficulty of a task can be seen as a spectrum and each task will have its own solution. 
+    For the ball tracking behavior by (Nao's) hand both the models showed promising results. 
+    As described in section \ref{sec:results}, the problem at hand only required Nao to use two degrees of freedom to learn the \textit{Inverse Kinematics}.
+    Contradictory to the example by Bishop\cite{bishop1994mixture} (which also uses two degrees of freedom), different $\theta_1$ and $\theta_2$ values could not result in the same outcome of the arm.
+    Therefore, comparing these two models in this study would be senseless as both have their own usefulness and referring back to the beginning of this paragraph: are a solution to a specific task.
+    A better use of the MDN is displayed by \cite{mirrazavi2018unified}, where they use two robotic arms that perform under 7 degrees of freedom (DOF) that need to avoid each other while touching an air bound thrown object.
+    Here, the MDN is used to compute different \textit{feasible intercept points} for the thrown object in respect to the arm.
+
+    Eventually, even when taking into account that both of us already understood the FFN, the MDN still seemed to be a more difficult concept to grasp and to implement.
+    Thus concluding, for this study the FFN would be our model of choice for the problem.
+    If the problem would have more degrees of freedom, then the MDN would be the better choice.
+
 
 
     % \cite{mirrazavi2018unified} <-- multi arm motion planning with MDN's. Usable as citation
 
+    \pagebreak
     \bibliographystyle{ieeetr}
     \bibliography{main}
 \end{document}
