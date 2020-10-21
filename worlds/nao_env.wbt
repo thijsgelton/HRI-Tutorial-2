@@ -22,8 +22,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0 1 0 3.1415926535897936
-  position 0 4.284131131649631e-18 -4.9392669102343865
+  orientation -0.15263797586117495 0.9728633431845657 0.17389239147459407 1.7280238806254533
+  position 3.4295851176649386 2.0092171668524403 -1.083170655468911
   follow "floor"
 }
 TexturedBackground {
@@ -35,12 +35,83 @@ Floor {
   tileSize 0.8 0.8
 }
 Nao {
-  translation -0.00030345930410711174 0.33297433674720756 3.880390309868874e-06
-  rotation 0.9999997969192611 0.00045048911858376845 -0.00045080038913797944 -1.5707882020526804
+  hidden translation_12 0 0 0.1265
+  hidden rotation_12 3.4671610388388224e-09 -1.571684780255296e-08 0.9999999999999999 0.4342480295390576
+  hidden translation_19 0 -0.098 0.1
+  hidden rotation_19 1.6741694529648055e-08 0.9999999999999997 1.7911589354020143e-08 1.503301963241164
+  hidden translation_20 0.105 -0.015 0
+  hidden rotation_20 1 0 0 0
+  hidden translation_21 0 0 0
+  hidden rotation_21 0 0 1 0
+  hidden translation_22 0.05595 0 0
+  hidden rotation_22 1 0 0 0
+  hidden translation_23 0.069 -0.013 -0.005
+  hidden rotation_23 0 1 0 0.9599999993844598
+  hidden translation_24 0.014 0 0
+  hidden rotation_24 0 0.9999999999999999 0 0.9599999997264008
+  hidden translation_25 0.014 0 0
+  hidden translation_26 0.069 0.013 -0.005
+  hidden rotation_26 0 0.9999999999999999 0 0.9599999993844675
+  hidden translation_27 0.014 0 0
+  hidden rotation_27 0 1 0 0.9599999997263777
+  hidden translation_28 0.014 0 0
+  hidden translation_29 0.049 0 -0.026
+  hidden translation_30 0.014 0 0
+  hidden rotation_30 0 -1 0 0.9599999999335608
+  hidden translation_31 0 0.098 0.1
+  hidden rotation_31 1.5252136430923664e-11 0.9999999984404834 5.584830524081279e-05 5.46285592908365e-07
+  hidden translation_32 0.105 0.015 0
+  hidden rotation_32 -1 0 0 1.7120130796843858e-07
+  hidden translation_33 0 0 0
+  hidden rotation_33 0 0 -1 1.8848643661548975e-07
+  hidden translation_34 0.05595 0 0
+  hidden rotation_34 -1 0 0 6.664001874625056e-08
+  hidden translation_35 0.069 -0.013 -0.005
+  hidden rotation_35 0 1 0 0.9600000000893375
+  hidden translation_36 0.014 0 0
+  hidden rotation_36 0 0.9999999999999999 0 0.9599999998368914
+  hidden translation_37 0.014 0 0
+  hidden rotation_37 0 1 0 0.9599999999251017
+  hidden translation_38 0.069 0.013 -0.005
+  hidden rotation_38 0 1 0 0.9600000000893336
+  hidden translation_39 0.014 0 0
+  hidden rotation_39 0 1 0 0.9599999998368972
+  hidden translation_40 0.014 0 0
+  hidden rotation_40 0 1 0 0.9599999999250901
+  hidden translation_41 0.049 0 -0.026
+  hidden rotation_41 0 1 0 0
+  hidden translation_42 0.014 0 0
+  hidden rotation_42 0 -1 0 0.9599999999555643
+  hidden translation_43 0 -0.05 -0.085
+  hidden rotation_43 0 -0.7071067811865476 -0.7071067811865476 2.615143176136055e-07
+  hidden translation_44 0 0 0
+  hidden rotation_44 -1 0 0 2.698715072315163e-07
+  hidden translation_45 0 0 0
+  hidden rotation_45 0 -1 0 2.4394252216435837e-07
+  hidden translation_46 0 0 -0.1
+  hidden rotation_46 0 -1 0 2.475566823160076e-07
+  hidden translation_47 0 0 -0.1029
+  hidden rotation_47 0 -1 0 2.5809568279517867e-07
+  hidden translation_48 0 0 0
+  hidden rotation_48 -1 0 0 2.6488883546935307e-07
+  hidden translation_53 0 0.05 -0.085
+  hidden rotation_53 0 -0.7071067811865476 0.7071067811865476 2.5463115409962945e-07
+  hidden translation_54 0 0 0
+  hidden rotation_54 1 0 0 2.7637536810325715e-07
+  hidden translation_55 0 0 0
+  hidden rotation_55 0 -1 0 2.4211521162497896e-07
+  hidden translation_56 0 0 -0.1
+  hidden rotation_56 0 -1 0 2.4575624618635555e-07
+  hidden translation_57 0 0 -0.1029
+  hidden rotation_57 0 -1 0 2.5809568279517867e-07
+  hidden translation_58 0 0 0
+  hidden rotation_58 1 0 0 2.632069845893339e-07
+  translation -0.00034998922979606 0.3330896501023238 3.795457569577957e-06
+  rotation 0.9999997294208082 0.0005201089957229333 -0.0005202354691032578 -1.570788522188722
   controller "<extern>"
 }
 Ball {
-  translation 0.73 0.4525 -0.11
+  translation 0.44 0.4525 -0.17
   color 0 1 0
   radius 0.05
 }

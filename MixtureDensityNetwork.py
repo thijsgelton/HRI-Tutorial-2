@@ -34,8 +34,12 @@ class MDN(nn.Module):
         return (1 / torch.sqrt(2 * np.pi * sigma)) * torch.exp((-1 / (2 * sigma)) * torch.norm((x - mu), 2, 1) ** 2)
 
     def sample_preds(self, pi, sigma, mu):
+        """
+        The argmax can be taken from pi to index mu and sigma. This is because pi turns into a one-hot encoded vector
+        whenever trained for a certain amount of epochs. The prob_sum method is no longer needed.
+        """
         pred = np.zeros(self.n_output)
-        pi_index = np.random.choice(range(len(pi)), p=pi)
+        pi_index = np.argmax(pi)
         for t in range(self.n_output):
-            pred[t] = np.random.normal(mu[pi_index * t:(pi_index + 1) * (t + 1)][0], sigma.data[pi_index])
+            pred[t] += np.random.normal(mu[pi_index * t:(pi_index + 1) * (t + 1)][0], sigma.data[pi_index])
         return pred

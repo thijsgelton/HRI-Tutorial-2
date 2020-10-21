@@ -87,15 +87,75 @@
 
 
     \section{Methods and algorithms}\label{sec:methods-and-algorithms}
+    The two algorithms that were used for the task of robot learning were a Feedforward Neural Network (FFN) and a Mixture Density Network (MDN).
+    Regarding the popularity of deep learning, the FFN is widely used and does not need an in\-depth explanation.
+    In short, it allows the modelling of non-linear distributions and performs exceptionally well on unstructured data.
+    A MDN is a network that allows to make predictions under uncertainty.
+    Meaning that a learned MDN outputs Gaussians and these are then used to sample from.
+    This allows it to model 1\-to\-many relations, where the input has multiple possible outputs.
+    Bishop\cite{bishop1994mixture}, shows an inverse sinusoid and how a MDN is able to model this where a FFN is not.
     %- Methods: Explain the methods/algorithms used and explain why
+
+    However, for any algorithm the first step to take is to gather data.
+    For this we re-used some of Nao's parts from the first assignment, i.e. the keyboard functionality and the segmentation of the ball in the image.
+    In a step-by-step manual fashion, the arm is first moved, then the ball is manually aligned and then 'E' is pressed to create a new data point.
+    This CSV file is imported into a PyTorch Dataset object (see notebook) and deduplicated to make sure that every X and Y coordinate pair of the ball only has one corresponding roll and pitch angle.
+
+    After importing the data, which consisted of 72 samples after deduplication, the MDN was trained first.
+    For this we used the Adam optimizer and a Negative Log-Likelihood (NNL) loss function.
+    The Adam optimizer needed an epsilon of $1e-05$ to compensate for the often occurring vanishing gradient when using the NNL loss function.
+    For this very reason, using a train and validation set was infeasible. 
+    The size of the dataset strongly impacted this vanishing gradient and thus all samples were needed in order to train the MDN model.   
+    Only one sample was reserved for testing.
+    The network itself has two inputs that are connected, via 1 hidden layer of 6 nodes, to the pi-($\pi$), sigma-($\sigma$) and mu($\mu$) layer.
+    Both the MDN and FFN use Tanh activation function.
+    The number of Gaussians, and thus the number of $\pi$, $\sigma$ and $\mu$ outputs, depends on the domain and it is up to the designer to specify this number.
+    In the results (page \ref{sec:results}) section we will compare the differences in the number of Gaussians.
+
+    To be able to compare the FFN and MDN, only one hidden layer with 6 nodes was used for the FFN as well.
+    The network was then trained using the Mean Squared Error (MSE) and the same Adam optimizer as with the MDN.
 
 
     \section{Results}\label{sec:results}
     %- Describe the results incorporating the advantages and limitations of the methods used.
+    \begin{wrapfigure}{l}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[trim=0 0 0 23pt,width=0.48\textwidth]{../part2/20kepochs_distr.png}
+        \end{center}
+        \caption{Mixture Models at different number of Gaussians and the target distribution. Input to each model was the mean of the x and y coordinates of the ball.}
+        \label{fig:learned-mix-model}
+        \vspace{15pt}
+    \end{wrapfigure}
+
+    Eventually we chose to use 2, 4 and 5 gaussians and compare the results.
+    The learned distributions can been seen in figure \ref{fig:learned-mix-model}.
+    In this specific case, where Nao's arm only used two degrees of freedom, the MDN would quickly converge to a point where the outputted $\pi$ would become a one-hot encoded vector. 
+    This meant that the Mixture Model would converge to only one Gaussian.
+    When inspecting figure \ref{fig:learned-mix-model}, you can clearly see that there are two means for each mixture and that number of gaussians correlate to the size of the covariance.
 
 
+    \begin{wrapfigure}{R}{0.6\textwidth}
+        \vspace{-20pt}
+        \begin{center}
+          \includegraphics[width=0.6\textwidth]{../part2/all_mod_predictions.png}
+        \end{center}
+        \caption{Predictions of the MDN models and the FFN model on the validation sample (N = 1).}
+        \label{fig:pred-models}
+    \end{wrapfigure}
+
+    Aside from inspecting Nao's behavior the FFN and the different MDN models were tested against the validation sample (N = 1).
+    In figure \ref{fig:pred-models} you can see that the best performing model is the MDN with 5 gaussians.
+    Do note that this is not representative as it is only 1 sample, but in order to be able to train the MDNs without the vanishing gradient nearly all samples were needed for training.
+    However, this one sample is unseen for all networks.
+
+    A factor that was impossible to capture by still images, was the actual performance of all models in the simulator.
+    Eventually, the FFN seem to outperform the MDNs as the MDN caused some oscillation whereas the FFN tracked the ball in a seemingly perfect and smooth manner.
+
+    \pagebreak
     \section{Conclusion}\label{sec:conclusion}
     %- Draw your own conclusion about this robot learning approach
+    Learning is indispensable when it comes to intelligent systems. 
+
 
     % \cite{mirrazavi2018unified} <-- multi arm motion planning with MDN's. Usable as citation
 

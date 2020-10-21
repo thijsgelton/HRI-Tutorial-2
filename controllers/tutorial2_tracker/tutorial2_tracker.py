@@ -14,14 +14,9 @@ class NaoRobot(Robot):
         super(NaoRobot, self).__init__()
         self.controller = controller
         print('> Starting robot controller')
-
-        self.timeStepInMilli = 32
-        self.state = 0
+        self.timeStepInMilli = 96
 
         # Sensors init
-        self.gps = self.getGPS('gps')
-        self.gps.enable(self.timeStepInMilli)
-
         self.step(self.timeStepInMilli)  # Execute one step to get the initial position
 
         self.topCam: Camera = self.getCamera("CameraTop")
@@ -129,11 +124,12 @@ class NaoRobot(Robot):
                 self.leftShoulderRoll.setPosition(roll)
 
 
-model = MDN(n_input=2, n_hidden=6, n_output=2, n_gaussians=2)
+model = MDN(n_input=2, n_hidden=20, n_output=2, n_gaussians=4)
 # model = FFN(n_input=2, n_hidden=6, n_output=2)
-# model.load_state_dict(torch.load(r'D:\Projects\Radboud Universiteit\Human-Robot Interaction\HRI_Tutorial2_students\part2\ffn_model_nao'))
+# model.load_state_dict(torch.load(
+#     r'D:\Projects\Radboud Universiteit\Human-Robot Interaction\HRI_Tutorial2_students\part2\ffn_model_nao_20kepochs'))
 model.load_state_dict(torch.load(
-    r'D:\Projects\Radboud Universiteit\Human-Robot Interaction\HRI_Tutorial2_students\part2\testmdn_model_nao_20kepochs_2gaussians'))
+    r'D:\Projects\Radboud Universiteit\Human-Robot Interaction\HRI_Tutorial2_students\part2\mdn_model_nao_20kepochs_4gaussians'))
 model.eval()
 
 print(model)
