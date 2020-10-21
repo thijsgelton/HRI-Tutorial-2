@@ -204,21 +204,21 @@ INPUT c:/texlive/2019/texmf-dist/fonts/vf/public/bera/fvmr8t.vf
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/public/bera/fvmr8r.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
+INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
 INPUT d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/../part2/20kepochs_distr.png
 INPUT ../part2/20kepochs_distr.png
 INPUT ../part2/20kepochs_distr.png
-INPUT d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/../part2/all_mod_predictions.png
-INPUT ../part2/all_mod_predictions.png
-INPUT ../part2/all_mod_predictions.png
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmrc8t.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmrc8t.vf
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
 INPUT c:/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT c:/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/../part2/all_mod_predictions.png
+INPUT ../part2/all_mod_predictions.png
+INPUT ../part2/all_mod_predictions.png
 INPUT d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.bbl
 INPUT d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.bbl
 INPUT d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.aux

@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1603275503 "main.aux" "main.bbl" "main" 1603275544
+["bibtex main"] 1603275503 "main.aux" "main.bbl" "main" 1603290656
   "c:/texlive/2019/texmf-dist/bibtex/bst/base/ieeetr.bst" 1574677342 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1603275505 2517 5232107b85e30e5cbdc27b62ad764ade "pdflatex"
+  "main.aux" 1603290655 2517 5232107b85e30e5cbdc27b62ad764ade "pdflatex"
   "main.bib" 1603268344 839 953f865c482b3d4b2d267df8f4cb5e4a ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1603275503 "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.tex" "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.pdf" "main" 1603275544
+["pdflatex"] 1603290654 "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.tex" "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.pdf" "main" 1603290656
   "../part2/20kepochs_distr.png" 1603214487 67014 d10f1b0085e642829296c307da98708a ""
   "../part2/all_mod_predictions.png" 1603220036 34985 0d6b457d448e06f12565e9cbefaa6f7e ""
   "arxiv.sty" 1574672901 7863 540b8d31efa75216211145c8b64c810c ""
@@ -124,16 +124,16 @@
   "c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1574682049 4741432 ede32d05196f69f144ce6ba0b4ddc628 ""
   "c:/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1574682118 4290334 0857ac8349461ab5d6110b5f437809cc ""
   "c:/texlive/2019/texmf.cnf" 1574682024 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.aux" 1603275505 2517 5232107b85e30e5cbdc27b62ad764ade ""
-  "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.tex" 1603275543 10620 df341a72d38893842fd34c776bf0bb56 ""
-  "main.aux" 1603275505 2517 5232107b85e30e5cbdc27b62ad764ade "pdflatex"
+  "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.aux" 1603290655 2517 5232107b85e30e5cbdc27b62ad764ade ""
+  "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.tex" 1603290653 11696 9f42fb64f2fe2008f51694285b0da78b ""
+  "main.aux" 1603290655 2517 5232107b85e30e5cbdc27b62ad764ade "pdflatex"
   "main.bbl" 1603275503 544 f7bf9e55d189a5a8772797ee71061b36 "bibtex main"
-  "main.out" 1603275505 191 f9cd41f5c70e3cd2a1e5a55777523858 "pdflatex"
-  "main.tex" 1603275543 10620 df341a72d38893842fd34c776bf0bb56 ""
+  "main.out" 1603290655 191 f9cd41f5c70e3cd2a1e5a55777523858 "pdflatex"
+  "main.tex" 1603290653 11696 9f42fb64f2fe2008f51694285b0da78b ""
   (generated)
-  "main.out"
   "main.log"
-  "main.pdf"
-  "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.pdf"
-  "main.aux"
   "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.log"
+  "d:/Projects/Radboud Universiteit/Human-Robot Interaction/HRI_Tutorial2_students/docs/main.pdf"
+  "main.pdf"
+  "main.out"
+  "main.aux"
